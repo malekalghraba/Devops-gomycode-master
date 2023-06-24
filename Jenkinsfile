@@ -12,9 +12,11 @@ pipeline{
      stage("mvn version"){ steps{
            sh 'mvn --version'}
 }
- stage("mvn clean"){ steps{
+      stage("mvn clean"){ steps{
            sh 'mvn clean '}}
-            stage("creation du livrable"){ steps{
+      stage("creation du livrable"){ 
+        steps{
+        
            sh 'mvn package -DskipTests=true'}}
 
 }}
