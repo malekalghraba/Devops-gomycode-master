@@ -9,8 +9,14 @@ pipeline{
            git url:'https://github.com/malekalghraba/Devops-gomycode-master '
 
  }}
-     stage("mvn build"){ steps{
+     stage("mvn version"){ steps{
            sh 'mvn --version'}
 }
+ stage("mvn clean"){ steps{
+           sh 'mvn clean '}}
+            stage("creation du livrable"){ steps{
+           sh 'mvn package -Dskiptests=true'}}
+ stage("lancement des tests unitaires"){ steps{
+           sh 'mvn test'}}
 
 }}
