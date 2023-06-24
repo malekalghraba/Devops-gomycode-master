@@ -15,6 +15,6 @@ pipeline{
  stage("mvn clean"){ steps{
            sh 'mvn clean '}}
             stage("creation du livrable"){ steps{
-           sh 'mvn package -Dskiptests=true'}}
+           sh 'mvn package -DskipTests=true'}}
 
 }}
