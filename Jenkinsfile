@@ -4,7 +4,8 @@ pipeline{
 
       stage("clone "){
 
-        steps{ 
+        steps{
+           echo "getting project from git" 
            git url:'https://github.com/malekalghraba/Devops-gomycode-master '
 
  }}
@@ -12,4 +13,4 @@ pipeline{
            sh 'mvn clean install'}
 }
 
-}
+}}
