@@ -23,11 +23,11 @@ pipeline{
         steps{
            sh 'mvn test'}} */
       
-  stage('SonarQube Analysis') {def mvn = tool 'Default Maven';
-   steps{  
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=front -Dsonar.projectName='front'"
-    }}
-  }
+   stage('Run SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh 'mvn clean install sonar:sonar'
+                }
+            }
 
 }}
