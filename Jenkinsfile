@@ -24,7 +24,7 @@ pipeline{
            sh 'mvn test'}} */
       
   stage('SonarQube Analysis') {
-   steps{
+   steps{  def mvn = tool 'Default Maven';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=front -Dsonar.projectName='front'"
     }}
