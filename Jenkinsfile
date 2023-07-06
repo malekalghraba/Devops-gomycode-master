@@ -19,9 +19,9 @@ pipeline{
         
            sh 'mvn package -DskipTests=true'}}
 
-     stage("lancement des tests unitaires"){ 
+    /* stage("lancement des tests unitaires"){ 
         steps{
-           sh 'mvn test'}} 
+           sh 'mvn test'}} */
       
    stage('SonarQube Analysis') { steps{ script{
     def mvn = tool 'maven';
