@@ -24,10 +24,10 @@ pipeline{
            sh 'mvn test'}} */
       
   stage('SonarQube Analysis') {
- 
+   steps{
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=front -Dsonar.projectName='front'"
-    }
+    }}
   }
 
 }}
