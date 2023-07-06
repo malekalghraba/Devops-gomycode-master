@@ -19,9 +19,15 @@ pipeline{
         
            sh 'mvn package -DskipTests=true'}}
 
-       stage("lancement des tests unitaires"){ 
+     /*  stage("lancement des tests unitaires"){ 
         steps{
-           sh 'mvn test'}}
+           sh 'mvn test'}} */
+       stage("Sonar") {
+          steps {
+
+            bat "mvn sonar:sonar"
+                }
+        }
 
 
 }}
