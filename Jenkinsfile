@@ -25,7 +25,7 @@ pipeline{
        stage("Sonar") {
           steps {
 
-            bat "mvn sonar:sonar"
+            sh "mvn sonar:sonar"
                 }
         }
 
