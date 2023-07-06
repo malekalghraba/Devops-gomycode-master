@@ -23,11 +23,11 @@ pipeline{
         steps{
            sh 'mvn test'}} 
       
-   stage('SonarQube Analysis') {
+   stage('SonarQube Analysis') { steps{ script{
     def mvn = tool 'maven';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=mycode -Dsonar.projectName='mycode'"
     }
-  }
+  }}}
 
 }}
