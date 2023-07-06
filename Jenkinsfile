@@ -22,12 +22,12 @@ pipeline{
      /*  stage("lancement des tests unitaires"){ 
         steps{
            sh 'mvn test'}} */
-       stage("Sonar") {
-          steps {
-
-            sh "mvn sonar:sonar"
+        stage('Run SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh 'mvn clean install sonar:sonar'
                 }
-        }
+            }
 
 
 }}
