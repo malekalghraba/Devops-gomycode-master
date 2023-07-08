@@ -30,8 +30,13 @@ pipeline{
       stage("creation du livrable"){ 
         steps{
         
-           sh 'mvn package -DskipTests=true'}}
-       
+           sh 'mvn package }}
+    stage('SonarQube Analysis') { steps{ script{
+    def mvn = tool 'maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=mycode -Dsonar.projectName='mycode'"
+    }
+  }}}      
 
 stage("Deploiement dans nexus ") {
      		 steps{
@@ -51,12 +56,7 @@ stage("Deploiement dans nexus ") {
         steps{
            sh 'mvn test'}} */
       
-   stage('SonarQube Analysis') { steps{ script{
-    def mvn = tool 'maven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=mycode -Dsonar.projectName='mycode'"
-    }
-  }}}
+
 
 }}
 
