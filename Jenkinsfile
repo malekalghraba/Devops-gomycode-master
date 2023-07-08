@@ -39,7 +39,7 @@ stage("Deploiement dans nexus ") {
   			sh "mvn deploy"
                 }
 
-
+}
  /* stage("Deploiement dans nexus ") {
      		 steps{
               // If you are using Windows then you should use "bat" step
@@ -59,4 +59,4 @@ stage("Deploiement dans nexus ") {
   }}}
 
 }}
-}
+
