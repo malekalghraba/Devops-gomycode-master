@@ -19,12 +19,12 @@ pipeline{
         steps{
         
            sh 'mvn package' }}
- /*   stage('SonarQube Analysis') { steps{ script{
+    stage('SonarQube Analysis') { steps{ script{
     def mvn = tool 'maven';
     withSonarQubeEnv() {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=mycode -Dsonar.projectName='mycode'"
     }
-  }}}     */ 
+  }}}      
 
 stage("Deployment stage") {
             steps {
