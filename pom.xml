@@ -19,8 +19,9 @@
 	 	 <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<repository>
-		 <id>nexus-releases</id>
-		 <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+		 <id>nexus</id>
+			<name>nexus>
+		 <url>http://localhost:8081/nexus/repositories/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
