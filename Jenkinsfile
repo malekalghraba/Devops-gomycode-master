@@ -1,18 +1,6 @@
 pipeline{
      agent any 
-     environment {
-        // This can be nexus3 or nexus2
-        NEXUS_VERSION = "nexus3"
-        // This can be http or https
-        NEXUS_PROTOCOL = "http"
-        // Where your Nexus is running
-        NEXUS_URL = "http://localhost:8081/nexus/repository/releases/"
-        // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "Releases"
-        // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "admin:azerty"
-              }
-
+    
   stages{
 
       stage("clone "){
@@ -38,14 +26,15 @@ pipeline{
     }
   }}}      
 
-stage("Deploiement dans nexus ") {
-     		 steps{
-                          
-  			sh "mvn deploy"
+stage("Deployment stage") {
+            steps {
+                script {
+                pom = readMavenPom file: 'pom.xml'
+                   echo "${pom.artifactId}-${pom.version}.${pom.packaging}"
+                   sh "mvn deploy:deploy-file  -DskipTests=true -DgroupId=${pom.groupId} -DartifactId=${pom.artifactId} -Dversion=${pom.version}  -DgeneratePom=true -Dpackaging=${pom.packaging}  -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/${pom.artifactId}-${pom.version}.${pom.packaging}"
                 }
-
-}
-
+            }
+        }
 
 
 }}
