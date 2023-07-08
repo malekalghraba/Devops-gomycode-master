@@ -30,7 +30,7 @@ pipeline{
       stage("creation du livrable"){ 
         steps{
         
-           sh 'mvn package }}
+           sh 'mvn package' }}
     stage('SonarQube Analysis') { steps{ script{
     def mvn = tool 'maven';
     withSonarQubeEnv() {
@@ -45,17 +45,7 @@ stage("Deploiement dans nexus ") {
                 }
 
 }
- /* stage("Deploiement dans nexus ") {
-     		 steps{
-              // If you are using Windows then you should use "bat" step
-              // Since unit testing is out of the scope we skip them
-      	sh "mvn deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet-ci -Dversion=5.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/timesheet-ci-5.1.jar"
-                }
-            } */
-       /* stage("lancement des tests unitaires"){ 
-        steps{
-           sh 'mvn test'}} */
-      
+
 
 
 }}
