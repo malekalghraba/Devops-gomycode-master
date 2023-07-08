@@ -20,7 +20,7 @@
 		</snapshotRepository>
 		<repository>
 		 <id>nexus</id>
-			<name>nexus>
+			<name>nexus</name>
 		 <url>http://localhost:8081/nexus/repositories/maven-releases/</url>
 		</repository>
 	</distributionManagement>
