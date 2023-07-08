@@ -11,7 +11,7 @@ pipeline{
         NEXUS_REPOSITORY = "Releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "admin:azerty"
-    }
+              }
 
   stages{
 
@@ -59,3 +59,4 @@ stage("Deploiement dans nexus ") {
   }}}
 
 }}
+}
